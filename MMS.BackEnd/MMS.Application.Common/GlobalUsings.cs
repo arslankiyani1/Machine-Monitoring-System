@@ -1,0 +1,16 @@
+﻿global using AutoMapper;
+global using FluentValidation;
+global using JetBrains.Annotations;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Query;
+global using Microsoft.Extensions.Logging;
+global using MMS.Application.Common.Dto;
+global using MMS.Application.Common.Exceptions.EntityExceptions;
+global using MMS.Application.Common.Extensions;
+global using MMS.Application.Common.Functional.Either;
+global using MMS.Application.Common.Traits;
+global using System.Diagnostics;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Linq.Expressions;
+global using System.Text.Json.Serialization;
+global using Npgsql;

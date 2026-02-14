@@ -1,0 +1,92 @@
+name: APC_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+
+variables:
+  buildConfiguration: 'Release'
+  osImage: 'windows-latest'
+
+stages:
+
+# ───────────────────────────────────────────────────────────────────────────────
+- stage: 'build_stage'
+  displayName: 'Build & Publish'
+  jobs:
+    - job: 'build_job'
+      displayName: 'Build'
+      pool:
+        vmImage: $(osImage)
+      steps:
+        # 1) Restore & build
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet restore'
+          inputs:
+            command: restore
+            projects: '**/*.csproj'
+
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet build'
+          inputs:
+            command: build
+            projects: '**/*.csproj'
+            arguments: '--configuration $(buildConfiguration)'
+
+        # 2) Publish into artifact staging directory
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet publish'
+          inputs:
+            command: publish
+            publishWebProjects: true
+            arguments: >
+              --configuration $(buildConfiguration)
+              --output $(Build.ArtifactStagingDirectory)
+
+        # 3) Zip the published output
+        - task: ArchiveFiles@2
+          displayName: 'Zip published output'
+          inputs:
+            rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+            includeRootFolder: false
+            archiveType: zip
+            archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+            replaceExistingArchive: true
+
+        # 4) Publish the zip as your build artifact
+        - task: PublishBuildArtifacts@1
+          displayName: 'Publish artifact'
+          inputs:
+            pathToPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
+            artifactName: drop
+            publishLocation: Container
+
+# ───────────────────────────────────────────────────────────────────────────────
+- stage: 'dev_stage'
+  displayName: 'Deploy to DEV'
+  dependsOn: build_stage
+  jobs:
+    - deployment: dev_agent
+      displayName: 'Deploy to Azure Web App'
+      environment: dev
+      pool:
+        vmImage: $(osImage)
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              # 1) Download that zip artifact
+              - task: DownloadBuildArtifacts@1
+                inputs:
+                  buildType: current
+                  downloadType: single
+                  artifactName: drop
+                  downloadPath: '$(Pipeline.Workspace)'
+
+              # 2) Deploy it to your Windows Web App
+              - task: AzureRmWebAppDeployment@4
+                displayName: 'Deploy to Azure Web App (v4)'
+                inputs:
+                  ConnectionType:    'AzureRM'
+                  azureSubscription: 'mms-service-con'
+                  appType: 'webApp'
+                  WebAppName: 'mms-service-test'
+                  packageForLinux:   '$(Pipeline.Workspace)/drop/**/*.zip' # works cross-platform

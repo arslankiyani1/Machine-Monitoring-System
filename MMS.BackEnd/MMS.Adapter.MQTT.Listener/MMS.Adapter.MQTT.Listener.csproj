@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Messaging.EventHubs" Version="5.12.2" />
+		<PackageReference Include="Azure.Messaging.EventHubs.Processor" Version="5.12.2" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.23.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.10" />
+		<PackageReference Include="MQTTnet" Version="4.3.7.1207" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MMS.Application\MMS.Application.csproj" />
+	</ItemGroup>
+
+</Project>

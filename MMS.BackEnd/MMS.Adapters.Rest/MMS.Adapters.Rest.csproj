@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateApiDescription>false</GenerateApiDescription>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MMS.Adapter.AzureRedisCache\MMS.Adapter.AzureRedisCache.csproj" />
+		<ProjectReference Include="..\MMS.Adapters.RabbitMq.SignalR\MMS.Adapters.RabbitMq.SignalR.csproj" />
+		<ProjectReference Include="..\MMS.Application.Common\MMS.Application.Common.csproj" />
+		<ProjectReference Include="..\MMS.Application\MMS.Application.csproj" />
+	</ItemGroup>
+
+</Project>

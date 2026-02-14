@@ -1,0 +1,10 @@
+﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using MMS.Application.Ports.In.NoSql.HistoricalStat;
+global using System.Net.Http.Json;
+global using MMS.Adapter.AzureWebJobs.Request;
+global using Microsoft.Extensions.Options;
+global using MMS.Application.Ports.In.NoSql.MachinMonitoring;
+global using MMS.Application.Interfaces;

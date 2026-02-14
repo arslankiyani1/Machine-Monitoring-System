@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Ports\In\FirebaseNotification\**" />
+    <EmbeddedResource Remove="Ports\In\FirebaseNotification\**" />
+    <None Remove="Ports\In\FirebaseNotification\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="FirebaseAdmin" Version="3.3.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.58" />
+    <PackageReference Include="Stripe.net" Version="48.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MMS.Application.Common\MMS.Application.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Ports\In\CustomerBilling\Validator\" />
+    <Folder Include="Ports\In\CustomerReport\Validator\" />
+    <Folder Include="Ports\In\NoSql\CustomerDashSummary\Dto\" />
+    <Folder Include="Ports\In\NoSql\MachineStatusSettings\Dto\" />
+    <Folder Include="Ports\In\NoSql\MachineStatusSettings\Validator\" />
+  </ItemGroup>
+
+</Project>

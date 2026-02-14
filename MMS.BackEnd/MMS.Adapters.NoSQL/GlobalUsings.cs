@@ -1,0 +1,15 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Reflection;
+global using MMS.Adapters.NoSQL.Data;
+global using MMS.Application.Models.NoSQL;
+global using MMS.Application.Ports.Out.Persistence.Interfaces.NoSql;
+global using MMS.Adapters.NoSQL.Repositories;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using MMS.Adapters.NoSQL.Common;
+global using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+global using System.Text.Json;
+global using MMS.Application.Common;
+global using MMS.Application.Enum;
+global using MMS.Application.Common.Dto;

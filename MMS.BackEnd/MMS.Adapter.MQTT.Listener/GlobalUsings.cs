@@ -1,0 +1,11 @@
+﻿global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Hosting;
+global using System.Text;
+global using Azure.Messaging.EventHubs.Processor;
+global using Azure.Messaging.EventHubs;
+global using Azure.Storage.Blobs;
+global using System.Text.Json;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using MMS.Application.Models.NoSQL;
+global using MMS.Application.Ports.In.NoSql.MachinMonitoring;

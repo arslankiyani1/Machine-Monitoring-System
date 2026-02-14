@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.7" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+	  <PackageReference Include="Sentry.AspNetCore" Version="5.13.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Adapter.Notification\MMS.Adapter.FirebaseNotification.csproj" />
+    <ProjectReference Include="..\AdapterTwilio\AdapterTwilio.csproj" />
+    <ProjectReference Include="..\MMS.Adapter.Azure.PaymentIntegration\MMS.Adapter.Azure.PaymentIntegration.csproj" />
+    <ProjectReference Include="..\MMS.Adapter.AzureWebJobs\MMS.Adapter.AzureWebJobs.csproj" />
+    <ProjectReference Include="..\MMS.Adapter.MQTT.Listener\MMS.Adapter.MQTT.Listener.csproj" />
+    <ProjectReference Include="..\MMS.Adapter.MQTT.Publisher\MMS.Adapter.MQTT.Publisher.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.AzureStorage\MMS.Adapters.AzureStorage.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.Email\MMS.Adapters.Email.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.Keycloak\MMS.Adapters.Keycloak.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.NoSQL\MMS.Adapters.NoSQL.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.PostgreSQL\MMS.Adapters.PostgreSQL.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.RabbitMq.SignalR\MMS.Adapters.RabbitMq.SignalR.csproj" />
+    <ProjectReference Include="..\MMS.Adapters.Rest\MMS.Adapters.Rest.csproj" />
+	<ProjectReference Include="..\MMS.Adapter.Reports\MMS.Adapter.Reports.csproj" />
+  </ItemGroup>
+
+</Project>
